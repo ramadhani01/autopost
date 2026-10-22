@@ -8,7 +8,7 @@ except:
     pass
 
 # ambil dari environment variable fly.io
-TIKTOK_EMAIL   = os.environ.get("TIKTOK_USERNAME", "")
+TIKTOK_USERNAME   = os.environ.get("TIKTOK_USERNAME", "")
 TIKTOK_PASS    = os.environ.get("TIKTOK_PASS", "")
 PHOTO_URL      = os.environ.get("PHOTO_URL", "")
 
@@ -22,9 +22,9 @@ SOURCE_PHOTO = f"{BASE_DIR}/foto.jpg"
 UPLOAD_TIMES = ["07:00", "12:00", "20:00"]
 
 CAPTIONS = [
-    "caption 1 #fyp #viral #trending",
+    "caption 1 #fyp #viral #trend",
     "caption 2 #masukberanda #foryoupage",
-    "caption 3 #tiktokid #viral #fyp",
+    "caption 3 #viralvideo #viral #fyp",
 ]
 
 def download_source_photo():
