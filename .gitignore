@@ -1,0 +1,10 @@
+*.jpg
+*.jpeg
+*.png
+*.mp4
+*.mp3
+variants/
+ready_upload/
+audio_trending/
+.env
+__pycache__/
