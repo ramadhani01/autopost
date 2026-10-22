@@ -8,7 +8,7 @@ except:
     pass
 
 # ambil dari environment variable fly.io
-TIKTOK_EMAIL   = os.environ.get("TIKTOK_EMAIL", "")
+TIKTOK_EMAIL   = os.environ.get("TIKTOK_USERNAME", "")
 TIKTOK_PASS    = os.environ.get("TIKTOK_PASS", "")
 PHOTO_URL      = os.environ.get("PHOTO_URL", "")
 
