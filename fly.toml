@@ -11,3 +11,21 @@ primary_region = "sin"
 [mounts]
   source = "tiktok_data"
   destination = "/app/data"
+
+[[services]]
+  internal_port = 8080
+  protocol      = "tcp"
+
+  [[services.ports]]
+    port = 80
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls"]
+
+  [[services.http_checks]]
+    interval      = 30000
+    timeout       = 5000
+    grace_period  = "30s"
+    method        = "GET"
+    path          = "/"
