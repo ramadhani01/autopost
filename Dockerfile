@@ -1,5 +1,10 @@
 FROM python:3.11-slim
 
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
 RUN apt-get update && apt-get install -y \
     ffmpeg \
     wget curl gnupg ca-certificates \
@@ -12,14 +17,9 @@ RUN apt-get update && apt-get install -y \
     libxcursor1 libxdamage1 libxext6 libxfixes3 \
     libxi6 libxrandr2 libxrender1 libxss1 libxtst6 \
     xdg-utils \
+    && playwright install-deps chromium \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app
-
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-RUN playwright install-deps chromium
 RUN playwright install chromium
 
 COPY . .
