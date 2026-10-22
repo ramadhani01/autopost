@@ -6,6 +6,7 @@ import sys
 import time
 import random
 import subprocess
+import threading
 import schedule
 import requests
 import numpy as np
@@ -13,6 +14,24 @@ import urllib.request
 from PIL import Image, ImageEnhance
 from pathlib import Path
 from datetime import datetime
+from http.server import HTTPServer, BaseHTTPRequestHandler
+
+
+class HealthHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"ok")
+
+    def log_message(self, format, *args):
+        pass  # silent log
+
+
+def start_health_server():
+    server = HTTPServer(("0.0.0.0", 8080), HealthHandler)
+    thread = threading.Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    print("[HEALTH] server jalan di port 8080")
 
 try:
     from dotenv import load_dotenv
@@ -447,6 +466,7 @@ if __name__ == "__main__":
 
     # download foto pertama kali
     download_source_photo()
+    start_health_server()
 
     if "--test" in sys.argv:
         print("[TEST] jalanin 1x sekarang...")
