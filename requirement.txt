@@ -1,0 +1,6 @@
+pillow
+numpy
+requests
+schedule
+playwright
+python-dotenv
